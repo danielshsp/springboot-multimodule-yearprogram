@@ -1,13 +1,19 @@
 package rc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+
+import java.io.Serializable;
 
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @Table(name = "categoryplantbl" ,schema = "ypl", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
-public class Category {
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
@@ -18,14 +24,12 @@ public class Category {
     private String thirdCategory;
     @Column(name = "years")
     private int year;
-    @Column(name = "company_id" ,insertable = false,updatable = false ,nullable = false)
-    private int companyId;
-
-    /*@ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;*/
-
-
+   // @Column(name = "company_id" ,insertable = false,updatable = false ,nullable = false)
+    //private int companyId;
+    @ManyToOne(fetch = FetchType.LAZY, optional= false)
+    @JoinColumn(name = "company_id", nullable = false)
+    @JsonIgnore
+    private Company company;
 
     public Category() {
     }
@@ -68,18 +72,18 @@ public class Category {
         this.year = year;
     }
 
-    public int getCompanyId() {
+    /*public int getCompanyId() {
         return companyId;
-    }
+    }*/
 
-    public void setCompanyId(int companyId) {
+    /*public void setCompanyId(int companyId) {
         this.companyId = companyId;
-    }
+    }*/
 
-    /*public Company getCompany() {
+    public Company getCompany() {
         return company;
     }
     public void setCompany(Company company) {
         this.company = company;
-    }*/
+    }
 }

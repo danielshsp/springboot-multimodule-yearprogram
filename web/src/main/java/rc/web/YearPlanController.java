@@ -23,8 +23,6 @@ public class YearPlanController {
     ControllerService controllerService;
     @Autowired
     ServiceCompany serviceCompany;
-    @Autowired
-    CompanyRepository companyRepository;
 
     @GetMapping(value = "/category/all")
     public List<Category> getAllCategory(){
@@ -43,24 +41,34 @@ public class YearPlanController {
         return serviceCompany.findAllByPage(page,size,order);
     }
 
+    @GetMapping(value = "/company/{id}")
+    public Company getCompanyByid(@PathVariable final int id){
+        return serviceCompany.findBycompanyId(id);
+    }
 
-    @GetMapping(value = "/company/{year}")
+    @GetMapping(value = "/company/name/{company}")
+    public Company findBycompany(@PathVariable final String company){
+        return serviceCompany.findBycompany(company);
+    }
+
+    @GetMapping(value = "/company/year/{year}")
     public List<Company> getAllOfCompanyByYear(@PathVariable final int year){
         return controllerService.getAllCompanyByYear(year);
+    }
+
+    @GetMapping(value = "/company/clearcache")
+    public String clearCache(){
+        return  serviceCompany.clearCache();
+    }
+
+    @GetMapping(value = "/company/deletecomp/{id}")
+    public Long deleteBycompanyId(@PathVariable final int id){
+         return serviceCompany.deleteBycompanyId(id);
     }
 
     @GetMapping(value = "/category/{secondCategory}/{year}")
     public List<Category> getAllCategoryByYearAndsecondCategory(@PathVariable final String secondCategory,@PathVariable final int year){
         return controllerService.getCategoryByYearAndsecondCategory(secondCategory,year);
-    }
-
-   @GetMapping(value="/create/company")
-    public void createthCompany(){
-        Company company = new Company("danieleran",2020);
-        Category cat = new Category("test","test4",2020);
-        //company.setCategory(Arrays.asList(cat));
-        company.getCategory().add(cat);
-       companyRepository.save(company);
     }
 
     @PostMapping(value="/create/company")

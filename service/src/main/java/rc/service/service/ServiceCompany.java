@@ -3,11 +3,13 @@ package rc.service.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import rc.cache.CompanyCahce;
 import rc.domain.Company;
 import rc.persistence.DaoCompany;
 import rc.service.jms.YearPlanSender;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServiceCompany {
@@ -16,6 +18,8 @@ public class ServiceCompany {
     DaoCompany daoCompany;
     @Autowired
     YearPlanSender yearPlanSender;
+    @Autowired
+    CompanyCahce companyCahce;
 
     public List<Company> findAll(){
         List<Company> companyList = daoCompany.findAll();
@@ -46,6 +50,22 @@ public class ServiceCompany {
         return singleCompany;
     }
 
+    public Company findBycompanyId(int companyId){
+        return companyCahce.findBycompanyId(companyId);
+    }
+
+    public Company findBycompany(String companyName){
+
+        return companyCahce.findBycompany(companyName);
+    }
+
+    public String clearCache(){
+        return companyCahce.clearCache();
+    }
+
+    public Long deleteBycompanyId(int companyId){
+        return companyCahce.deleteBycompanyId(companyId);
+    }
     /*public List<Company> creationOfCompany(String companyName, int year){
         Company company =  new Company(companyName, year);
         String [] companyArr =  companyName.split(",");

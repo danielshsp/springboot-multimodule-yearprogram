@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import rc.domain.Company;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -36,6 +37,12 @@ public class DaoCompany {
         return companyRepository.findBycompanyId(companyId).get();
     }
 
+    public Company findBycompany(String companyName){
+        return companyRepository.findBycompany(companyName).get();
+    }
+
+
+
     public List<Company> findCompanyByyear(int year){
         return companyRepository.findCompanyByyear(year);
     }
@@ -50,5 +57,9 @@ public class DaoCompany {
 
     public void delete(Company company){
         companyRepository.delete(company);
+    }
+
+    public Long deleteBycompanyId(int companyId){
+       return companyRepository.deleteBycompanyId(companyId);
     }
 }

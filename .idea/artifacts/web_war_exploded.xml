@@ -1,6 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="web:war exploded">
     <output-path>$PROJECT_DIR$/web/target/web-0.0.1-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -19,6 +26,9 @@
           <element id="archive" name="config-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="config" />
           </element>
+          <element id="archive" name="CompanyCache-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="CompanyCache" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.10.RELEASE" />
@@ -32,7 +42,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.14.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
@@ -48,9 +57,13 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.13.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.14.RELEASE" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-cache:1.5.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.14.RELEASE" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:2.9.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-activemq:1.5.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jms:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.14.RELEASE" />

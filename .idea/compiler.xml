@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="CompanyCache" />
         <module name="config" />
         <module name="domain" />
         <module name="persistence" />
@@ -14,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="CompanyCache" target="1.8" />
       <module name="config" target="1.8" />
       <module name="domain" target="1.8" />
       <module name="persistence" target="1.8" />

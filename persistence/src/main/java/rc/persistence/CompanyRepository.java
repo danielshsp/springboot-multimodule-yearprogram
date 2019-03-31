@@ -19,6 +19,10 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     List<Company> findCompanyByyear(int year);
     Optional<Company> findBycompanyId(int companyId);
     List<Company> findCompByyear(int year);
+    Optional<Company> findBycompany(String company);
+    @Transactional
+    Long deleteBycompanyId(int companyId);
+
 
 }
 

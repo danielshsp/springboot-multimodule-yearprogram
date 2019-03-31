@@ -9,11 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service</artifactId>
+    <artifactId>CompanyCache</artifactId>
     <packaging>jar</packaging>
-
     <dependencies>
-
         <dependency>
             <groupId>rc</groupId>
             <artifactId>domain</artifactId>
@@ -24,17 +22,6 @@
             <artifactId>persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>rc</groupId>
-            <artifactId>config</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>rc</groupId>
-            <artifactId>CompanyCache</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>

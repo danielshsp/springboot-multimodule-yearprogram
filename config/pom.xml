@@ -12,6 +12,16 @@
     <artifactId>config</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>rc</groupId>
+            <artifactId>persistence</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
 
 
 

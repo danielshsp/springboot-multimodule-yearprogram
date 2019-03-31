@@ -1,13 +1,14 @@
 package rc.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "companyplantbl", schema = "ypl", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
-public class Company {
+public class Company  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
@@ -16,8 +17,8 @@ public class Company {
     private String company;
     @Column(name = "years")
     private int year;
-    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "company_id" , referencedColumnName = "id")
+    @OneToMany(mappedBy="company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@JoinColumn(name = "company_id" , referencedColumnName = "id")
     private List<Category> category = new ArrayList<Category>();
 
     public Company() {
