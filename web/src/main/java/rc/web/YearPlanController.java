@@ -30,8 +30,8 @@ public class YearPlanController {
     }
 
     @GetMapping(value = "/company/all")
-    public List<Company> getAllCompany(){
-        return controllerService.getAllOfCompany();
+    public List<Company> getAllCompany(@RequestParam(required = false) boolean noCache){
+        return serviceCompany.findAll(noCache);
     }
 
 

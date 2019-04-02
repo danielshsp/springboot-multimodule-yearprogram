@@ -21,8 +21,8 @@ public class ServiceCompany {
     @Autowired
     CompanyCahce companyCahce;
 
-    public List<Company> findAll(){
-        List<Company> companyList = daoCompany.findAll();
+    public List<Company> findAll(boolean noCache){
+        List<Company> companyList = companyCahce.findAll(noCache);
         yearPlanSender.sendTopic("Get  all of company list");
         return companyList;
     }
