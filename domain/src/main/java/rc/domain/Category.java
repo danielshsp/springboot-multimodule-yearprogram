@@ -24,12 +24,12 @@ public class Category implements Serializable {
     private String thirdCategory;
     @Column(name = "years")
     private int year;
-   // @Column(name = "company_id" ,insertable = false,updatable = false ,nullable = false)
-    //private int companyId;
-    @ManyToOne(fetch = FetchType.LAZY, optional= false)
+    @Column(name = "company_id" ,insertable = false,updatable = false )
+    private int companyId;
+   /* @ManyToOne(fetch = FetchType.LAZY, optional= false)
     @JoinColumn(name = "company_id", nullable = false)
     @JsonIgnore
-    private Company company;
+    private Company company;*/
 
     public Category() {
     }
@@ -72,18 +72,18 @@ public class Category implements Serializable {
         this.year = year;
     }
 
-    /*public int getCompanyId() {
+    public int getCompanyId() {
         return companyId;
-    }*/
+    }
 
-    /*public void setCompanyId(int companyId) {
+    public void setCompanyId(int companyId) {
         this.companyId = companyId;
-    }*/
-
+    }
+    /*
     public Company getCompany() {
         return company;
     }
     public void setCompany(Company company) {
         this.company = company;
-    }
+    }*/
 }

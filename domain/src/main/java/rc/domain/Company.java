@@ -17,8 +17,8 @@ public class Company  implements Serializable {
     private String company;
     @Column(name = "years")
     private int year;
-    @OneToMany(mappedBy="company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //@JoinColumn(name = "company_id" , referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "company_id" , referencedColumnName = "id")
     private List<Category> category = new ArrayList<Category>();
 
     public Company() {
