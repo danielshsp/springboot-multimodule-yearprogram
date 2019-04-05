@@ -5,6 +5,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Component;
 import rc.domain.Company;
+import rc.persistence.DaoCategory;
 import rc.persistence.DaoCompany;
 import org.springframework.cache.annotation.Cacheable;
 
@@ -15,7 +16,10 @@ public class CompanyCahce {
 
     @Autowired
     DaoCompany daoCompany;
- 
+
+    @Autowired
+    DaoCategory daoCategory;
+
     @Cacheable(value = "companyCache", key = "#name")
     public Company findBycompany(String name){
         System.out.println("retrive  from DB" +name);
@@ -45,7 +49,9 @@ public class CompanyCahce {
     @CacheEvict(value="companyCache",key = "#companyId")
     public Long deleteBycompanyId(int companyId){
         System.out.println("delete ItemCache Component.."+companyId);
-        return daoCompany.deleteBycompanyId(companyId);
+        Long count = daoCategory.deleteBycompanyId(companyId);
+        count += daoCompany.deleteBycompanyId(companyId);
+        return count;
     }
 
 

@@ -34,6 +34,10 @@ public class DaoCategory {
         categoryRepository.delete(category);
     }
 
+    public Long deleteBycompanyId(int companyId){
+        return categoryRepository.deleteBycompanyId(companyId);
+    }
+
 
 
 

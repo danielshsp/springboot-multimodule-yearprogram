@@ -1,6 +1,7 @@
 package rc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -24,12 +25,12 @@ public class Category implements Serializable {
     private String thirdCategory;
     @Column(name = "years")
     private int year;
-    @Column(name = "company_id" ,insertable = false,updatable = false )
+   @Column(name = "company_id" ,insertable = false,updatable = false )
     private int companyId;
-   /* @ManyToOne(fetch = FetchType.LAZY, optional= false)
-    @JoinColumn(name = "company_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id", insertable = false, updatable = false)
     @JsonIgnore
-    private Company company;*/
+    private  Company company;
 
     public Category() {
     }
@@ -79,11 +80,11 @@ public class Category implements Serializable {
     public void setCompanyId(int companyId) {
         this.companyId = companyId;
     }
-    /*
+
     public Company getCompany() {
-        return company;
+        return this.company;
     }
     public void setCompany(Company company) {
         this.company = company;
-    }*/
+    }
 }

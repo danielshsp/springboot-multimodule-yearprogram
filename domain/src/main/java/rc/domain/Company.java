@@ -4,21 +4,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "companyplantbl", schema = "ypl", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "id")})
+        @UniqueConstraint(columnNames = "company_id")})
 public class Company  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "company_id",  unique = true, nullable = false)
     private int companyId;
     @Column(name = "company_name", columnDefinition = "NVARCHAR(255)")
     private String company;
     @Column(name = "years")
     private int year;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "company_id" , referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY,orphanRemoval = true)
+    @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private List<Category> category = new ArrayList<Category>();
 
     public Company() {
@@ -54,10 +55,13 @@ public class Company  implements Serializable {
     }
 
     public List<Category> getCategory() {
-        return category;
+        return this.category;
     }
 
     public void setCategory(List<Category> category) {
-        this.category = category;
+
+            this.category = category;
     }
+
+
 }

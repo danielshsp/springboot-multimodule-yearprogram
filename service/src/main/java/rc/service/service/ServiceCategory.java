@@ -2,6 +2,7 @@ package rc.service.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rc.cache.CompanyCahce;
 import rc.domain.Category;
 import rc.persistence.DaoCategory;
 import rc.service.jms.YearPlanSender;
@@ -29,4 +30,5 @@ public class ServiceCategory {
         yearPlanSender.sendTopic("Get all of category list");
         return categoryList;
     }
+
 }
